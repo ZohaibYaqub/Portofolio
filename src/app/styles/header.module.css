@@ -1,215 +1,190 @@
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 25px;
-    height: 6rem;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
-    font-family: 'Poppins', sans-serif;
-
-
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 25px;
+  height: 6rem;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
+  font-family: "Poppins", sans-serif;
 }
 
 .navlist {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-
+  display: flex;
+  align-items: center;
+  text-decoration: none;
 }
 
 .li {
-    list-style: none;
-    /* padding: 0 14px; */
-    margin: 0 10px;
-    padding: 0 5px;
-    cursor: pointer;
-    font-size: 17px;
+  list-style: none;
+  /* padding: 0 14px; */
+  margin: 0 10px;
+  padding: 0 5px;
+  cursor: pointer;
+  font-size: 17px;
 
-    font-weight: 400;
-
+  font-weight: 400;
 }
 
 .a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 .button:hover {
-    background-color:#14d217;
-    color: white;
+  background-color: #14d217;
+  color: white;
 }
 
 .li:hover {
-    color: #3AF507;
-
+  color: #3af507;
 }
 
 .button {
-    display: flex;
-    margin: 0 10px;
-    padding: 10px 15px;
-    cursor: pointer;
-    border: none;
-    border-radius: 10px;
-    font-size: 15px;
-    background-color: #3AF507;
-    color: black;
-    font-family: 'Poppins', sans-serif;
-
-
-
+  display: flex;
+  margin: 0 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  background-color: #3af507;
+  color: black;
+  font-family: "Poppins", sans-serif;
 }
 
 .name {
-    cursor: pointer;
-    background-position: center;
-    background-image: url(https://as1.ftcdn.net/v2/jpg/02/19/36/90/1000_F_219369048_1MQ8eZynFltpjKqzbm6bHMa4k2FfU0AM.jpg);
-    color: transparent;
-    background-clip: text;
-    -webkit-background-clip: text;
-
-
-
+  cursor: pointer;
+  background-position: center;
+  background-image: url(https://as1.ftcdn.net/v2/jpg/02/19/36/90/1000_F_219369048_1MQ8eZynFltpjKqzbm6bHMa4k2FfU0AM.jpg);
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
 }
 
 .a {
-    text-decoration: none;
-    list-style: none;
+  text-decoration: none;
+  list-style: none;
 }
 
 .hamburger {
-    display: none;
-
+  display: none;
 }
 
 .bar {
-    display: block;
-    width: 22px;
-    height: 2px;
-    margin: 5px auto;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background-color: black;
+  display: block;
+  width: 22px;
+  height: 2px;
+  margin: 5px auto;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+  background-color: black;
 }
 
 .drk {
-    font-size: 24px;
-    cursor: pointer;
+  font-size: 24px;
+  cursor: pointer;
 }
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Dark Mode Enable */
 
+@media (max-width: 1024px) {
+  .navlist {
+    display: none;
+  }
 
-@media (max-width:1024px) {
-    .navlist {
-        display: none;
-    }
-
-    .img {
-        display: none;
-    }
-
+  .img {
+    display: none;
+  }
 }
 
-@media (max-width:768px) {
-    .name {
-        font-size: 20px;
-    }
+@media (max-width: 768px) {
+  .name {
+    font-size: 20px;
+  }
 
-    .drk {
-        display: block;
-        color: rgb(17 24 39);
-    }
+  .drk {
+    display: block;
+    color: rgb(17 24 39);
+  }
 
-    .header {
-        padding: 0 11px;
-        display: flex;
-        justify-content: space-between;
-        position: fixed;
-        height: 5rem;
-        top: 0;
-        left: 0;
-        right: 0;
-        background-color: white;
-        /* Set your background color as needed */
-        z-index: 10000;
-        /* You can adjust the z-index as needed */
-    }
-    
+  .header {
+    padding: 0 11px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    height: 5rem;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    /* Set your background color as needed */
+    z-index: 10000;
+    /* You can adjust the z-index as needed */
+  }
 
+  .a {
+    font-size: 15px;
+    color: white;
+  }
 
-    .a {
-        font-size: 15px;
-        color: white;
-    }
-    
+  .navlist {
+    position: fixed;
+    left: -100%;
+    top: 11%;
+    flex-direction: column;
+    background-color: black;
+    width: 100%;
+    height: 70vh;
+    text-align: center;
+    transition: 0.5s;
+    box-shadow: 0 10px 27px rgb(0 0 0 / 5%);
+    display: block;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
 
+  .navlist.active {
+    left: 0%;
+    top: 11%;
+    /* right: 20%; */
+  }
 
-    .navlist {
-        position: fixed;
-        left: -100%;
+  .li {
+    margin: 0.5rem 0;
+  }
 
-        top: 11%;
-        flex-direction: column;
-        background-color: black;
-        width: 100%;
-        height: 70vh;
-        text-align: center;
-        transition: 0.5s;
-        box-shadow: 0 10px 27px rgb(0 0 0 / 5%);
-        display: block;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-    }
+  .hamburger {
+    display: block;
+    cursor: pointer;
+    /* padding-right: 20px; */
+    border: 3px solid #3af507;
+    margin: 0 12px;
+    padding: 2px 4px;
+  }
 
-    .navlist.active {
-        left: 0%;
-        top: 11%;
-        /* right: 20%; */
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
 
-    }
+  .hamburger.active .bar:nth-child(1) {
+    -webkit-transform: translateY(8px) rotate(45deg);
+    transform: translateY(6px) rotate(45deg);
+  }
 
-    .li {
-        margin: 0.5rem 0;
-    }
+  .hamburger.active .bar:nth-child(3) {
+    -webkit-transform: translateY(-8px) rotate(-45deg);
+    transform: translateY(-8px) rotate(-45deg);
+  }
 
-    .hamburger {
-        display: block;
-        cursor: pointer;
-        /* padding-right: 20px; */
-        border: 3px solid #3AF507;
-        margin: 0 12px;
-        padding: 2px 4px;
-
-    }
-
-    .hamburger.active .bar:nth-child(2) {
-        opacity: 0;
-    }
-
-    .hamburger.active .bar:nth-child(1) {
-        -webkit-transform: translateY(8px) rotate(45deg);
-        transform: translateY(6px) rotate(45deg);
-    }
-
-    .hamburger.active .bar:nth-child(3) {
-        -webkit-transform: translateY(-8px) rotate(-45deg);
-        transform: translateY(-8px) rotate(-45deg);
-
-    }
-
-    .button {
-        margin: 0.5rem 0;
-
-    }
-
-
+  .button {
+    margin: 0.5rem 0;
+  }
 }

@@ -5,7 +5,7 @@ const Page = () => {
   return (
     <>
       <section className="text-gray-600 body-font cursor-pointer font-Poppins  ">
-        <div className="container px-5 py-1 mx-auto  ">
+        <div className="container px-5 py-1 mx-auto   ">
           
           <h2 className='flex justify-center items-center my-10 text-black dark:text-white'>Our Courses</h2>
           <div className="flex flex-wrap -m-4 ">
