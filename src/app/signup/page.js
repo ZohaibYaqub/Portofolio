@@ -5,7 +5,7 @@ import footer from '../components/footer'
 import Image from 'next/image'
 import toast, { Toaster } from 'react-hot-toast'
 
-const Signup = () => {
+const signup = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
@@ -132,4 +132,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default signup
