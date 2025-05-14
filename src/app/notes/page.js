@@ -17,7 +17,7 @@ const notes = () => {
               <div className="md:flex-grow ">
                 <h2 className=" text-gray-900 title-font mb-2 text-3xl font-bold dark:text-white">HOW TO INSTALL IDM LIFETIME  </h2>
                 <p className="leading-relaxed my-3 dark:text-white">I can guide you on how to install Internet Download Manager (IDM) for a lifetime.</p>
-                <Link className="no-underline dark:text-white" href=""><button className="button">Read More</button></Link>
+                <Link className="no-underline dark:text-white" href="/tutorials/idm-setup"><button className="button">Read More</button></Link>
               </div>
             </div>
             <div className="py-8 flex flex-wrap md:flex-nowrap shadow-md bg-white rounded-2xl my-5 dark:bg-slate-800">
@@ -28,7 +28,7 @@ const notes = () => {
               <div className="md:flex-grow">
                 <h2 className=" text-gray-900 title-font mb-2 text-3xl font-bold dark:text-white">HOW TO REMOVE ADS  WEB / MBLE FOR LIFETIME </h2>
                 <p className="leading-relaxed my-3 dark:text-white">I can provide you with steps on how to remove ads from various platforms or devices, but I'll need more specific information about what you're trying to achieve.</p>
-                <Link className="no-underline" href=""><button className="button ">Read More</button></Link>
+                <Link className="no-underline" href="/tutorials/remove-ads"><button className="button">Read More</button></Link>
               </div>
             </div>
             <div className="py-8 flex flex-wrap md:flex-nowrap shadow-md bg-white rounded-2xl my-5 dark:bg-slate-800">
@@ -39,7 +39,7 @@ const notes = () => {
               <div className="md:flex-grow">
                 <h2 className=" text-gray-900 title-font mb-2  text-3xl font-bold dark:text-white">HOW TO FREE NETFLIX WITHOUT SUBSCRIPTION ON MOBILE</h2>
                 <p className="leading-relaxed my-3 dark:text-white">I can Guide you how to free netflix app without subscription package.</p>
-                <Link className="no-underline" href=""><button className="button">Read More</button></Link>
+                <Link className="no-underline" href="/tutorials/free-netflix"><button className="button">Read More</button></Link>
               </div>
             </div>
 
@@ -51,7 +51,7 @@ const notes = () => {
               <div className="md:flex-grow">
                 <h2 className=" text-gray-900 title-font mb-2  text-3xl font-bold dark:text-white">HOW TO PLAY STORE INSTALL IN PC & MACBOOK</h2>
                 <p className="leading-relaxed my-3 dark:text-white">I can Easily Explained how to play store install in windows.</p>
-                <Link className="no-underline" href=""><button className="button">Read More</button></Link>
+                <Link className="no-underline" href="/tutorials/playstore-pc"><button className="button">Read More</button></Link>
               </div>
             </div>
 
@@ -63,7 +63,7 @@ const notes = () => {
               <div className="md:flex-grow">
                 <h2 className=" text-gray-900 title-font mb-2  text-3xl font-bold dark:text-white">HOW TO INSTALL OFFICE 365 LIFETIME PRODUCT KEY WITHOUT PURCHASE </h2>
                 <p className="leading-relaxed my-3 dark:text-white">I can certainly help you with that! To use Office 365 for a lifetime, you'll need to Follow My Steps.</p>
-                <Link className="no-underline" href=""><button className="button">Read More</button></Link>
+                <Link className="no-underline" href="/tutorials/office365-lifetime"><button className="button">Read More</button></Link>
               </div>
             </div>
           </div>

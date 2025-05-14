@@ -1,25 +1,15 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import footer from '../components/footer'
 import Image from 'next/image'
+import toast, { Toaster } from 'react-hot-toast'
 
 const signup = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
-  const [message, setMessage] = useState('')
-
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        setMessage('')
-      }, 3000 )
-
-      return () => clearTimeout(timer)
-    }
-  }, [message])
 
   const handleChange = (e) => {
     setFormData({
@@ -32,32 +22,39 @@ const signup = () => {
     e.preventDefault()
     
     try {
-      // Debug log (temporary)
-      console.log('Sending data:', formData);
-
       const response = await fetch('/api/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),  // This should contain both email and password
+        body: JSON.stringify(formData),
       })
 
       const data = await response.json()
       
       if (response.ok) {
-        setMessage('Account successfully created!')
+        toast.success('Account successfully created!', {
+          duration: 3000,
+          position: 'top-right',
+        })
         setFormData({ email: '', password: '' })
       } else {
-        setMessage(data.message || 'Something went wrong. Please try again.')
+        toast.error(data.message || 'Something went wrong. Please try again.', {
+          duration: 3000,
+          position: 'top-right',
+        })
       }
     } catch (error) {
-      setMessage('Error creating account. Please try again.')
+      toast.error('Error creating account. Please try again.', {
+        duration: 3000,
+        position: 'top-right',
+      })
     }
   }
 
   return (
     <>
+      <Toaster />
       <section className="text-gray-600 body-font font-Poppins">
         <div className="container py-24 mx-auto flex justify-center">
           <div className="md:pr-16 lg:pr-0 pr-0">
@@ -67,12 +64,6 @@ const signup = () => {
             <h2 className="text-gray-800 text-center text-lg font-medium title-font mb-2 dark:text-white">Sign Up</h2>
             <h2 className="text-gray-500 text-center text-lg font-medium title-font mb-5 dark:text-slate-300">Create an Account!</h2>
             
-            {message && (
-              <div className={`text-center mb-4 ${message.includes('successfully') ? 'text-green-500' : 'text-red-500'}`}>
-                {message}
-              </div>
-            )}
-
             <form onSubmit={handleSubmit}>
               <div className="relative mb-4">
                 <label htmlFor="email" className="leading-7 text-sm text-gray-600 dark:text-slate-300">Email Address</label>

@@ -1,9 +1,10 @@
 'use client'
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import footer from '../components/footer'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import toast, { Toaster } from 'react-hot-toast'
 
 const Login = () => {
   const router = useRouter()
@@ -11,17 +12,6 @@ const Login = () => {
     email: '',
     password: ''
   })
-  const [message, setMessage] = useState('')
-
-  // Message ko 5 seconds ke baad hide karne ke liye
-  useEffect(() => {
-    if (message) {
-      const timer = setTimeout(() => {
-        setMessage('')
-      }, 5000)
-      return () => clearTimeout(timer)
-    }
-  }, [message])
 
   const handleChange = (e) => {
     setFormData({
@@ -45,21 +35,31 @@ const Login = () => {
       const data = await response.json()
       
       if (response.ok) {
-        setMessage('Login successful!')
+        toast.success('Login successful!', {
+          duration: 3000,
+          position: 'top-right',
+        })
         // Login successful hone par home page par redirect kar denge
         setTimeout(() => {
           router.push('/')  // Replace '/' with your home page path
         }, 1000)
       } else {
-        setMessage(data.message || 'Invalid email or password. Please sign up first.')
+        toast.error(data.message || 'Invalid email or password. Please sign up first.', {
+          duration: 3000,
+          position: 'top-right',
+        })
       }
     } catch (error) {
-      setMessage('Error logging in. Please try again.')
+      toast.error('Error logging in. Please try again.', {
+        duration: 3000,
+        position: 'top-right',
+      })
     }
   }
 
   return (
     <>
+      <Toaster />
       <section className="text-gray-600 body-font font-Poppins">
         <div className="container py-24 mx-auto flex justify-center">
           <div className="md:pr-16 lg:pr-0 pr-0">
@@ -68,12 +68,6 @@ const Login = () => {
           <div className="shadow-2xl lg:w-2/6 md:w-1/2 rounded-lg p-6 flex flex-col md mt-10 md:mt-0 dark:bg-slate-800">
             <h2 className="text-gray-800 text-center text-lg font-medium title-font mb-2 dark:text-white">Login</h2>
             <h2 className="text-gray-500 text-center text-lg font-medium title-font mb-5 dark:text-slate-300">Welcome Back!</h2>
-            
-            {message && (
-              <div className={`text-center mb-4 ${message.includes('successful') ? 'text-green-500' : 'text-red-500'}`}>
-                {message}
-              </div>
-            )}
 
             <form onSubmit={handleSubmit}>
               <div className="relative mb-4">
