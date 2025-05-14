@@ -36,25 +36,45 @@ const Signup = () => {
         toast.success('Account successfully created!', {
           duration: 3000,
           position: 'top-right',
+          style: {
+            zIndex: 1000,
+            marginTop: '4rem'
+          }
         })
         setFormData({ email: '', password: '' })
       } else {
         toast.error(data.message || 'Something went wrong. Please try again.', {
           duration: 3000,
           position: 'top-right',
+          style: {
+            zIndex: 1000,
+            marginTop: '4rem'
+          }
         })
       }
     } catch (error) {
       toast.error('Error creating account. Please try again.', {
         duration: 3000,
         position: 'top-right',
+        style: {
+          zIndex: 1000,
+          marginTop: '4rem'
+        }
       })
     }
   }
 
   return (
     <>
-      <Toaster />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            zIndex: 1000,
+            marginTop: '4rem'
+          }
+        }}
+      />
       <section className="text-gray-600 body-font font-Poppins">
         <div className="container py-24 mx-auto flex justify-center">
           <div className="md:pr-16 lg:pr-0 pr-0">

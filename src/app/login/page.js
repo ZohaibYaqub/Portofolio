@@ -38,6 +38,10 @@ const Login = () => {
         toast.success('Login successful!', {
           duration: 3000,
           position: 'top-right',
+          style: {
+            zIndex: 1000,
+            marginTop: '4rem'
+          }
         })
         // Login successful hone par home page par redirect kar denge
         setTimeout(() => {
@@ -47,19 +51,35 @@ const Login = () => {
         toast.error(data.message || 'Invalid email or password. Please sign up first.', {
           duration: 3000,
           position: 'top-right',
+          style: {
+            zIndex: 1000,
+            marginTop: '4rem'
+          }
         })
       }
     } catch (error) {
       toast.error('Error logging in. Please try again.', {
         duration: 3000,
         position: 'top-right',
+        style: {
+          zIndex: 1000,
+          marginTop: '4rem'
+        }
       })
     }
   }
 
   return (
     <>
-      <Toaster />
+      <Toaster
+        position="top-right"
+        toastOptions={{
+          style: {
+            zIndex: 1000,
+            marginTop: '4rem'
+          }
+        }}
+      />
       <section className="text-gray-600 body-font font-Poppins">
         <div className="container py-24 mx-auto flex justify-center">
           <div className="md:pr-16 lg:pr-0 pr-0">
