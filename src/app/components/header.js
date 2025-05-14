@@ -39,9 +39,9 @@ const Header = () => {
             <li className={styles.li}><Link className={styles.a} href="/tutorial">Tutorial</Link></li>
             <li className={styles.li}><Link className={styles.a} href="/notes">Notes</Link></li>
             <li className={styles.li}><Link className={styles.a} href="/contact">Contact</Link></li>
-            <li className={styles.li}><Link className={styles.a} href="/Workwithus">Work With Us</Link></li>
+            <li className={styles.li}><Link className={styles.a} href="/workwithus">Work With Us</Link></li>
             <Link className="no-underline" href="/login"><button className={styles.button}>LogIn</button></Link>
-            <Link className="no-underline" href="/Signup"><button className={styles.button}>SignUp</button></Link>
+            <Link className="no-underline" href="/signup"><button className={styles.button}>SignUp</button></Link>
           </ul>
           <i className={styles.drk} onClick={toggleDarkMode}>
             {isDarkMode ? (
