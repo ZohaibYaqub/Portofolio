@@ -3,13 +3,13 @@ import React, { useState } from 'react'
 import Link from 'next/link'
 import footer from '../components/footer'
 import Image from 'next/image'
-import toast, { Toaster } from 'react-hot-toast'
 
 const Signup = () => {
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   })
+  const [message, setMessage] = useState({ text: '', type: '' })
 
   const handleChange = (e) => {
     setFormData({
@@ -33,59 +33,27 @@ const Signup = () => {
       const data = await response.json()
       
       if (response.ok) {
-        toast.success('Account successfully created!', {
-          duration: 3000,
-          position: 'top-right',
-          style: {
-            zIndex: 1000,
-            marginTop: '2rem'
-          }
-        })
+        setMessage({ text: 'Account created successfully!', type: 'success' })
         setFormData({ email: '', password: '' })
+        setTimeout(() => {
+          setMessage({ text: '', type: '' })
+        }, 3000)
       } else {
-        toast.error(data.message || 'Something went wrong. Please try again.', {
-          duration: 3000,
-          position: 'top-right',
-          style: {
-            zIndex: 1000,
-            marginTop: '2rem'
-          }
-        })
+        setMessage({ text: data.message || 'Something went wrong. Please try again.', type: 'error' })
+        setTimeout(() => {
+          setMessage({ text: '', type: '' })
+        }, 3000)
       }
     } catch (error) {
-      toast.error('Error creating account. Please try again.', {
-        duration: 3000,
-        position: 'top-right',
-        style: {
-          zIndex: 1000,
-          marginTop: '2rem'
-        }
-      })
+      setMessage({ text: 'Error creating account. Please try again.', type: 'error' })
+      setTimeout(() => {
+        setMessage({ text: '', type: '' })
+      }, 3000)
     }
   }
 
   return (
     <>
-      <Toaster
-        position="top-right"
-        reverseOrder={false}
-        containerStyle={{
-          position: 'fixed',
-          top: '4rem',
-          right: '1rem',
-          zIndex: 1000
-        }}
-        toastOptions={{
-          style: {
-            zIndex: 1000,
-            marginTop: '4rem',
-            background: '#333',
-            color: '#fff',
-            padding: '1rem'
-          },
-          duration: 3000
-        }}
-      />
       <section className="text-gray-600 body-font font-Poppins">
         <div className="container py-24 mx-auto flex justify-center">
           <div className="md:pr-16 lg:pr-0 pr-0">
@@ -95,6 +63,16 @@ const Signup = () => {
             <h2 className="text-gray-800 text-center text-lg font-medium title-font mb-2 dark:text-white">Sign Up</h2>
             <h2 className="text-gray-500 text-center text-lg font-medium title-font mb-5 dark:text-slate-300">Create an Account!</h2>
             
+            {message.text && (
+              <div className={`mb-4 p-3 rounded text-center ${
+                message.type === 'success' 
+                  ? 'bg-green-100 text-green-700 border border-green-400' 
+                  : 'bg-red-100 text-red-700 border border-red-400'
+              }`}>
+                {message.text}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit}>
               <div className="relative mb-4">
                 <label htmlFor="email" className="leading-7 text-sm text-gray-600 dark:text-slate-300">Email Address</label>
