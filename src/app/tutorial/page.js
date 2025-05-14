@@ -7,7 +7,7 @@ const tutorial = () => {
   return (
     <>
       <section className="text-gray-600 body-font font-Poppins">
-        <div className="container px-5 py-18 mx-auto ">
+        <div className="container px-5  mx-auto p-20 ">
           < div className="flex flex-wrap -m-4 p-8">
             <div className="lg:w-1/4 md:w-1/2 p-4  w-full dark:bg-slate-800 ">
               <a className="block relative h-48 rounded overflow-hidden ">

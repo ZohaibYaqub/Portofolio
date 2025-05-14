@@ -7,7 +7,7 @@ const page = () => {
     <>
       <section className="text-gray-600 body-font cursor-pointer font-Poppins my-14 ">
 
-        <div className="container px-5  mx-auto">
+        <div className="container px-5 p-8 mx-auto">
           <h2 className='flex justify-center items-center my-10 text-black dark:text-white'>Our Courses</h2>
           <div className="flex flex-wrap -m-4">
             <div className="p-4 md:w-1/3">
