@@ -38,7 +38,7 @@ const Signup = () => {
           position: 'top-right',
           style: {
             zIndex: 1000,
-            marginTop: '4rem'
+            marginTop: '2rem'
           }
         })
         setFormData({ email: '', password: '' })
@@ -48,7 +48,7 @@ const Signup = () => {
           position: 'top-right',
           style: {
             zIndex: 1000,
-            marginTop: '4rem'
+            marginTop: '2rem'
           }
         })
       }
@@ -58,7 +58,7 @@ const Signup = () => {
         position: 'top-right',
         style: {
           zIndex: 1000,
-          marginTop: '4rem'
+          marginTop: '2rem'
         }
       })
     }
@@ -68,11 +68,22 @@ const Signup = () => {
     <>
       <Toaster
         position="top-right"
+        reverseOrder={false}
+        containerStyle={{
+          position: 'fixed',
+          top: '4rem',
+          right: '1rem',
+          zIndex: 1000
+        }}
         toastOptions={{
           style: {
             zIndex: 1000,
-            marginTop: '4rem'
-          }
+            marginTop: '4rem',
+            background: '#333',
+            color: '#fff',
+            padding: '1rem'
+          },
+          duration: 3000
         }}
       />
       <section className="text-gray-600 body-font font-Poppins">

@@ -40,7 +40,7 @@ const Login = () => {
           position: 'top-right',
           style: {
             zIndex: 1000,
-            marginTop: '4rem'
+            marginTop: '2rem'
           }
         })
         // Login successful hone par home page par redirect kar denge
@@ -53,18 +53,18 @@ const Login = () => {
           position: 'top-right',
           style: {
             zIndex: 1000,
-            marginTop: '4rem'
+            marginTop: '2rem'
           }
         })
       }
     } catch (error) {
       toast.error('Error logging in. Please try again.', {
         duration: 3000,
-        position: 'top-right',
-        style: {
-          zIndex: 1000,
-          marginTop: '4rem'
-        }
+          position: 'top-right',
+          style: {
+            zIndex: 1000,
+            marginTop: '2rem'
+          }
       })
     }
   }
@@ -72,13 +72,24 @@ const Login = () => {
   return (
     <>
       <Toaster
-        position="top-right"
-        toastOptions={{
-          style: {
-            zIndex: 1000,
-            marginTop: '4rem'
-          }
-        }}
+          position="top-right"
+          reverseOrder={false}
+          containerStyle={{
+            position: 'fixed',
+            top: '4rem',
+            right: '1rem',
+            zIndex: 1000
+          }}
+          toastOptions={{
+            style: {
+              zIndex: 1000,
+              marginTop: '4rem',
+              background: '#333',
+              color: '#fff',
+              padding: '1rem'
+            },
+            duration: 3000
+          }}
       />
       <section className="text-gray-600 body-font font-Poppins">
         <div className="container py-24 mx-auto flex justify-center">
