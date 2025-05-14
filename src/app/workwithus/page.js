@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import footer from '../components/footer'
 import toast, { Toaster } from 'react-hot-toast'
 
-const workwithus = () => {
+const Workwithus = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -247,4 +247,4 @@ const workwithus = () => {
   )
 }
 
-export default workwithus
+export default Workwithus
