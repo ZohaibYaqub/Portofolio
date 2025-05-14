@@ -9,63 +9,82 @@ export async function OPTIONS() {
 
 export async function POST(request) {
   try {
-    console.log('Starting signup process...')
-    
     // Connect to database
-    console.log('Connecting to database...')
     await connectDB()
-    console.log('Database connected successfully')
 
     // Get email and password from request body
     const body = await request.json()
     const { email, password } = body
-    console.log('Received signup data for email:', email)
 
-    // Validate input
+    // Basic validation
     if (!email || !password) {
-      console.log('Missing email or password')
       return NextResponse.json({ 
+        success: false,
         message: 'Email and password are required' 
       }, { status: 400 })
     }
 
-    // Check if user exists
-    console.log('Checking if user exists...')
-    const existingUser = await User.findOne({ email })
-    if (existingUser) {
-      console.log('User already exists')
+    // Email format validation
+    const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/
+    if (!emailRegex.test(email)) {
       return NextResponse.json({ 
+        success: false,
+        message: 'Please enter a valid email address' 
+      }, { status: 400 })
+    }
+
+    // Password length validation
+    if (password.length < 6) {
+      return NextResponse.json({ 
+        success: false,
+        message: 'Password must be at least 6 characters long' 
+      }, { status: 400 })
+    }
+
+    // Check if user exists
+    const existingUser = await User.findOne({ email: email.toLowerCase() })
+    if (existingUser) {
+      return NextResponse.json({ 
+        success: false,
         message: 'Email already registered' 
       }, { status: 400 })
     }
 
     // Create new user
-    console.log('Creating new user...')
-    try {
-      const user = await User.create({ 
-        email, 
-        password 
-      })
-      console.log('User created successfully:', user.email)
+    const user = await User.create({ 
+      email: email.toLowerCase(), 
+      password 
+    })
 
-      return NextResponse.json({ 
-        message: 'Account created successfully',
-        user: { email: user.email }
-      }, { status: 201 })
-    } catch (createError) {
-      console.error('Error creating user:', createError)
-      return NextResponse.json({ 
-        message: 'Error creating account: ' + createError.message,
-        details: createError.toString()
-      }, { status: 500 })
-    }
+    return NextResponse.json({ 
+      success: true,
+      message: 'Account created successfully',
+      user: { email: user.email }
+    }, { status: 201 })
 
   } catch (error) {
-    console.error('Signup process error:', error)
+    console.error('Signup error:', error)
+    
+    // Check for MongoDB duplicate key error
+    if (error.code === 11000) {
+      return NextResponse.json({ 
+        success: false,
+        message: 'This email is already registered' 
+      }, { status: 400 })
+    }
+
+    // Check for validation errors
+    if (error.name === 'ValidationError') {
+      const messages = Object.values(error.errors).map(err => err.message)
+      return NextResponse.json({ 
+        success: false,
+        message: messages.join(', ') 
+      }, { status: 400 })
+    }
+
     return NextResponse.json({ 
-      message: 'Error in signup process',
-      error: error.message,
-      stack: error.stack
+      success: false,
+      message: 'Error creating account. Please try again.' 
     }, { status: 500 })
   }
 }
