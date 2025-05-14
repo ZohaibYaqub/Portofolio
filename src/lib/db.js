@@ -5,10 +5,16 @@ const connectDB = async () => {
     if (mongoose.connections[0].readyState) {
       return;
     }
-    await mongoose.connect('mongodb://localhost:27017/portofolio', );
+
+    if (!process.env.MONGODB_URI) {
+      throw new Error('MONGODB_URI environment variable is not defined');
+    }
+
+    await mongoose.connect(process.env.MONGODB_URI);
     console.log('MongoDB connected successfully');
   } catch (error) {
     console.error('MongoDB connection error:', error);
+    throw error; // Re-throw error so we can handle it in the API route
   }
 };
 
