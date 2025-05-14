@@ -9,86 +9,63 @@ export async function OPTIONS() {
 
 export async function POST(request) {
   try {
-    // Enable CORS
-    const origin = request.headers.get('origin')
+    console.log('Starting signup process...')
     
     // Connect to database
+    console.log('Connecting to database...')
     await connectDB()
+    console.log('Database connected successfully')
 
     // Get email and password from request body
-    const { email, password } = await request.json()
-    
-    // Debug log (temporary)
-    console.log('Received signup request')
+    const body = await request.json()
+    const { email, password } = body
+    console.log('Received signup data for email:', email)
 
     // Validate input
     if (!email || !password) {
-      return new NextResponse(
-        JSON.stringify({ message: 'Email and password are required' }),
-        { 
-          status: 400,
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': origin || '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          }
-        }
-      )
+      console.log('Missing email or password')
+      return NextResponse.json({ 
+        message: 'Email and password are required' 
+      }, { status: 400 })
     }
 
     // Check if user exists
+    console.log('Checking if user exists...')
     const existingUser = await User.findOne({ email })
     if (existingUser) {
-      return new NextResponse(
-        JSON.stringify({ message: 'Email already registered' }),
-        { 
-          status: 400,
-          headers: {
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': origin || '*',
-            'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-            'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-          }
-        }
-      )
+      console.log('User already exists')
+      return NextResponse.json({ 
+        message: 'Email already registered' 
+      }, { status: 400 })
     }
 
     // Create new user
-    const user = await User.create({ 
-      email, 
-      password 
-    })
+    console.log('Creating new user...')
+    try {
+      const user = await User.create({ 
+        email, 
+        password 
+      })
+      console.log('User created successfully:', user.email)
 
-    return new NextResponse(
-      JSON.stringify({
+      return NextResponse.json({ 
         message: 'Account created successfully',
         user: { email: user.email }
-      }),
-      { 
-        status: 201,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': origin || '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        }
-      }
-    )
+      }, { status: 201 })
+    } catch (createError) {
+      console.error('Error creating user:', createError)
+      return NextResponse.json({ 
+        message: 'Error creating account: ' + createError.message,
+        details: createError.toString()
+      }, { status: 500 })
+    }
 
   } catch (error) {
-    console.error('Signup error:', error)
-    return new NextResponse(
-      JSON.stringify({ message: 'Error creating account: ' + error.message }),
-      { 
-        status: 500,
-        headers: {
-          'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': origin || '*',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-          'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-        }
-      }
-    )
+    console.error('Signup process error:', error)
+    return NextResponse.json({ 
+      message: 'Error in signup process',
+      error: error.message,
+      stack: error.stack
+    }, { status: 500 })
   }
 }
