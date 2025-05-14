@@ -14,7 +14,7 @@ const ubuntu = Ubuntu({
   display: 'swap',
 })
 export const metadata = {
-  title: 'Learning Skills',
+  title: 'My Portfolio',
 
 }
 
