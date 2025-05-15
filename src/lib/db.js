@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://zohaibyaqub11:<zohaib123>@cluster0.capskqi.mongodb.net/";
+const MONGODB_URI = process.env.MONGODB_URI || "mongodb+srv://zohaibyaqub11:zohaib123@cluster0.capskqi.mongodb.net/nextjsdb?retryWrites=true&w=majority";
 
 const connectDB = async () => {
   try {
@@ -10,8 +10,13 @@ const connectDB = async () => {
       return;
     }
 
-    // Connect to MongoDB
-    await mongoose.connect(MONGODB_URI);
+    // Connect to MongoDB with connection options
+    await mongoose.connect(MONGODB_URI, {
+      connectTimeoutMS: 30000, // Increase timeout to 30 seconds
+      socketTimeoutMS: 30000,  // Increase socket timeout to 30 seconds
+      maxPoolSize: 10,         // Maintain up to 10 socket connections
+    });
+    
     console.log('MongoDB connected successfully');
 
     // Add connection error handler
