@@ -1,5 +1,3 @@
-
-
 import { NextResponse } from 'next/server'
 import connectDB from '@/lib/db'
 import User from '@/models/User'
@@ -72,9 +70,14 @@ export async function POST(request) {
     })
 
   } catch (error) {
-    console.error('Signup error:', error)
+    console.error('Signup error details:', {
+      message: error.message,
+      stack: error.stack,
+      mongoUriExists: !!process.env.MONGODB_URI
+    })
     return NextResponse.json({ 
-      message: 'Error creating account: ' + error.message 
+      message: 'Error creating account: ' + error.message,
+      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
     }, { status: 500 })
   }
 }
