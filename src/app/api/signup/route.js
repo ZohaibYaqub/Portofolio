@@ -24,6 +24,8 @@ export async function POST(request) {
     
     // Debug log (temporary)
     console.log('Received data:', { email, password })
+    console.log('MONGODB_URI:', process.env.MONGODB_URI);
+
 
     // Validate input
     if (!email || !password) {

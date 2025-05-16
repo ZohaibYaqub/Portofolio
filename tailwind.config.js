@@ -14,7 +14,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        Ubuntu: ["Ubuntu", "sans-serif"],
+        // Ubuntu: ["Ubuntu", "sans-serif"],
         Poppins: ["Poppins", "sans-serif"]
 
       }

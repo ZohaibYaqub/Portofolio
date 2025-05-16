@@ -1,39 +1,26 @@
-
 import main from './components/main'
 import './globals.css'
-import { Ubuntu } from 'next/font/google'
+import { Poppins } from 'next/font/google'
 import Header from './components/header'
 
-
-
-
-
-const ubuntu = Ubuntu({
-  weight: '500',
+const poppins = Poppins({
+  weight: ['400', '500', '600'],
   subsets: ['latin'],
   display: 'swap',
 })
+
 export const metadata = {
   title: 'My Portfolio',
-
 }
-
 
 export default function RootLayout({ children }) {
   return (
-
-    <html lang="en" className={ubuntu.className}>
-
-      <body >
-        
-          <Header />
-          {/* {main()} */}
-
-
-          {children}
-       
+    <html lang="en" className={poppins.className}>
+      <body>
+        <Header />
+        {/* {main()} */}
+        {children}
       </body>
     </html>
-
   )
 }
