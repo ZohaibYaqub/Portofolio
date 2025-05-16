@@ -1,6 +1,20 @@
+
+
 import { NextResponse } from 'next/server'
 import connectDB from '@/lib/db'
 import User from '@/models/User'
+
+// Add OPTIONS handler for CORS preflight requests
+export async function OPTIONS() {
+  return NextResponse.json({}, { 
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+    }
+  })
+}
 
 export async function POST(request) {
   try {
@@ -48,7 +62,14 @@ export async function POST(request) {
       message: 'Account created successfully',
       user: { email: user.email },
       
-    }, { status: 201 })
+    }, { 
+      status: 201,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'POST, OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
+      }
+    })
 
   } catch (error) {
     console.error('Signup error:', error)
@@ -56,4 +77,4 @@ export async function POST(request) {
       message: 'Error creating account: ' + error.message 
     }, { status: 500 })
   }
-} 
+}
