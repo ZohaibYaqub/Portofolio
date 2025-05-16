@@ -2,18 +2,6 @@ import { NextResponse } from 'next/server'
 import connectDB from '@/lib/db'
 import User from '@/models/User'
 
-// Add OPTIONS handler for CORS preflight requests
-export async function OPTIONS() {
-  return NextResponse.json({}, { 
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-    }
-  })
-}
-
 export async function POST(request) {
   try {
     // Connect to database
@@ -24,8 +12,6 @@ export async function POST(request) {
     
     // Debug log (temporary)
     console.log('Received data:', { email, password })
-    console.log('MONGODB_URI:', process.env.MONGODB_URI);
-
 
     // Validate input
     if (!email || !password) {
@@ -62,24 +48,12 @@ export async function POST(request) {
       message: 'Account created successfully',
       user: { email: user.email },
       
-    }, { 
-      status: 201,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-      }
-    })
+    }, { status: 201 })
 
   } catch (error) {
-    console.error('Signup error details:', {
-      message: error.message,
-      stack: error.stack,
-      mongoUriExists: !!process.env.MONGODB_URI
-    })
+    console.error('Signup error:', error)
     return NextResponse.json({ 
-      message: 'Error creating account: ' + error.message,
-      details: process.env.NODE_ENV === 'development' ? error.stack : undefined
+      message: 'Error creating account: ' + error.message 
     }, { status: 500 })
   }
-}
+} 
