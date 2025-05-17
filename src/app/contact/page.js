@@ -18,7 +18,7 @@ const contact = () => {
 
           <span className='flex cursor-pointer my-6 '>
 
-            <Link href="https://www.facebook.com/profile.php?id=100090786762444" target='_blank'><i className=' text-purple-800 px-4 text-3xl dark:text-white'>{BsGithub()}</i></Link>
+            <Link href="https://github.com/ZohaibYaqub" target='_blank'><i className=' text-purple-800 px-4 text-3xl dark:text-white'>{BsGithub()}</i></Link>
 
 
 
@@ -30,7 +30,7 @@ const contact = () => {
 
 
 
-            <Link href="https://api.whatsapp.com/qr/J5PPENYRPZJKC1?autoload=1&app_absent=0" target='_blank'><i className='px-4 text-3xl text-purple-800 dark:text-white '>{IoLogoWhatsapp()}</i></Link>
+            <Link href="https://wa.me/qr/J5PPENYRPZJKC1" target='_blank'><i className='px-4 text-3xl text-purple-800 dark:text-white '>{IoLogoWhatsapp()}</i></Link>
 
 
           </span>

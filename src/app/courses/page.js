@@ -55,7 +55,7 @@ const page = () => {
 
             <div className="p-4 md:w-1/3">
               <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-md dark:bg-slate-800">
-                <Image className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://www.xpand-it.com/wp-content/uploads/2022/08/Artificial-intelligence_blog.png" alt="blog" width={384} height={216} />
+                <Image className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://plus.unsplash.com/premium_photo-1676637656166-cb7b3a43b81a?q=80&w=1632&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="blog" width={384} height={216} />
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">FREE COURSE</h2>
                   <h1 className="title-font text-lg font-medium text-gray-900 mb-2 dark:text-white">Artifical Intelligence (Ai)</h1>
@@ -120,7 +120,7 @@ const page = () => {
             <div className="p-4 md:w-1/3">
               <div className="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden shadow-md dark:bg-slate-800">
 
-                <Image className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://res.cloudinary.com/practicaldev/image/fetch/s--JszVhDtd--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/rd3omc5vp71r5k9z69b4.png" alt="blog" width={384} height={216} />
+                <Image className="lg:h-48 md:h-36 w-full object-cover object-center" src="https://plus.unsplash.com/premium_photo-1669530958591-15cbad83785b?q=80&w=1615&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="blog" width={384} height={216} />
                 <div className="p-6">
                   <h2 className="tracking-widest text-xs title-font font-medium text-gray-400 mb-1">FREE COURSE</h2>
                   <h1 className="title-font text-lg font-medium text-gray-900 mb-2 dark:text-white">Next Js</h1>

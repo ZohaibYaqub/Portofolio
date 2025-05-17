@@ -13,7 +13,8 @@ module.exports = {
       'superiorcodelabs.com',
       'www.xpand-it.com',
       'res.cloudinary.com',
-      'dummyimage.com', 
+      'dummyimage.com',
+      "plus.unsplash.com"
      
     ],
   },
